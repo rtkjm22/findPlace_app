@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="content-type" content="text/html">
     <title><%= title %></title>
+    <link rel="shortcut icon" href="./src/img/favicon.ico">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&family=M+PLUS+Rounded+1c&display=swap" rel="stylesheet">
@@ -12,9 +13,16 @@
     <link rel="stylesheet" type="text/css" href="./src/css/style.css">
 </head>
 <body>
+<style>
+    #map {
+        height: 400px;
+        width: 600px;
+    }
+</style>
+    <div id="map"></div>
 
     <header>
-        <h1>Find what you want</h1>
+        <h1>Find What You Want</h1>
         <div class="hum">
             <span></span>
             <span></span>
@@ -58,10 +66,10 @@
         </div>
     </main>
 
+
     <footer>
         <small>©2021 R.Kojima All rights reserved.</small>
     </footer>
-
     <script type="text/javascript" src="./src/js/main.js"> </script>
 </body>
 </html>
