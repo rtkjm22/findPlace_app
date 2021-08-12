@@ -3,14 +3,14 @@ const router = express.Router();
 const db = require('../models/index');
 const { Op } = require('sequelize');
 
-const apikey = require('./private');
-const key = apikey.api.key;
+require('dotenv').config();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-    
+    const key = process.env.API_KEY;
     const data = {
         title: 'Top page',
+        key: key,
     }
     res.render('index', data);
 });

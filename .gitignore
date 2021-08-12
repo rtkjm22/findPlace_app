@@ -1,2 +1,2 @@
 .DS_Store
-/routes/private.js
+.env
