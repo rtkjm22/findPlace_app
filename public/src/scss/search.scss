@@ -1,0 +1,30 @@
+@charset "utf-8";
+
+@use "base" as b;
+
+#results {
+    list-style: decimal inside;
+    font-size: 1.5rem;
+    li {
+        margin-bottom: 20px;
+    }
+    a {
+        position: relative;
+        font-family: b.$ja;
+        font-size: 1.3rem;
+        &::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 3px;
+            background-color: b.$gray;
+            transition: all .5s;
+        }
+        &:hover::before {
+            width: 100%;
+        }
+    }
+}

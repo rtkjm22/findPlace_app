@@ -10,7 +10,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&family=M+PLUS+Rounded+1c&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="./src/css/reset.css">
-    <link rel="stylesheet" type="text/css" href="./src/css/style.css">
+    <link rel="stylesheet" type="text/css" href="./src/css/search.css">
 </head>
 <body>
 
@@ -24,10 +24,10 @@
         <div class="header_nav">
             <nav>
                 <ul>
-                    <li><a href="#">TOP</a></li>
-                    <li><a href="#">CONTACT</a></li>
-                    <li><a href="#">LOGIN</a></li>
-                    <li class="signup"><a href="#">SIGN UP</a></li>
+                    <li><a href="/">TOP</a></li>
+                    <li><a href="/contact">CONTACT</a></li>
+                    <li><a href="/users/login">LOGIN</a></li>
+                    <li class="signup"><a href="/users/signup">SIGN UP</a></li>
                 </ul>
             </nav>
         </div>
@@ -40,7 +40,7 @@
             <div class="content">
                 <h2><%= title %></h2>
                 <p class="explain"><%= content %></p>
-                <ul id="results"></ul>
+                <ol id="results"></ol>
             </div>
         </div>
     </main>
@@ -51,6 +51,6 @@
 
 
     <script type="text/javascript" src="./src/js/gm_search.js"> </script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=<%= key %>&callback=initMap&libraries=places" async defer> </script>
+    <!-- <script src="https://maps.googleapis.com/maps/api/js?key=<%= key %>&callback=initMap&libraries=places" async defer> </script> -->
 </body>
 </html>

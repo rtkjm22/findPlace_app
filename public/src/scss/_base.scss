@@ -1,0 +1,170 @@
+@charset "utf-8";
+
+$ja: 'M PLUS Rounded 1c', sans-serif;;
+$en: 'Comfortaa', cursive;
+$gray: #414141;
+$yellow: #ffff7d;
+
+$breakpoints: (
+    'tab': "screen and (max-width:1250px)",
+    'sp': "screen and (max-width:900px)",
+);
+//$breakpoint: pcで初期設定している
+@mixin md($breakpoint: sp) {
+    @media #{map-get($breakpoints, $breakpoint)} {
+        @content;
+    }
+}
+
+
+h1, h2, h3, p, span, label, small, a, input {
+    font-family: $en;
+    color: $gray;
+}
+
+/**
+* header ****************************************************************************************************
+**/
+header {
+    position: relative;
+    width: 100vw;
+    h1 {
+        font-size: 4rem;
+        margin: 20px 0 0 80px;
+    }
+}
+.hum {
+    display: none;
+    position: absolute;
+    top: 0;
+    right: 20px;
+    width: 36px;
+    height: 36px;
+    cursor: pointer;
+    span {
+        display: block;
+        position: absolute;
+        width: 100%;
+        height: 4px;
+        border-radius: 4px;
+        background-color: black;
+        &:nth-of-type(1) {
+            top: 0;
+        }
+        &:nth-of-type(2) {
+            top: 48%;
+        }
+        &:nth-of-type(3) {
+            bottom: 0;
+        }
+    }
+}
+.header_nav {
+    position: fixed;
+    top: 20px;
+    right: 5%;
+    width: 30%;
+    ul {
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+        align-items: center;
+        box-sizing: border-box;
+    }
+    li {
+        position: relative;
+        box-sizing: border-box;
+        padding: 10px 20px;
+        border-radius: 10px;
+        &:hover {
+            opacity: .7;;
+        }
+        &::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background-color: yellow;
+            transition: all .3s;
+        }
+        &:hover::before {
+            width: 100%;
+        }
+    }
+    .signup {
+        background-color: $yellow;
+        border: 3px solid white;
+        transition: all .3s;
+        &:hover {
+            border: 3px solid $yellow;
+            background-color: white;
+        }
+        &::before {
+            display: none;
+        }
+    }
+
+}
+/**
+* /header ****************************************************************************************************
+**/
+
+/**
+* main ****************************************************************************************************
+**/
+.main_wrapper {
+    margin: 100px auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    max-width: 1400px;
+}
+#map {
+    width: 600px;
+    height: 500px;
+    background-color: $gray;
+    border-radius: 20px;
+    border: 3px solid $yellow;
+    overflow: hidden;
+    box-shadow: 0px 5px 10px -2px rgba(0, 0, 0, 0.3);
+}
+.content {
+    width: 600px;
+    background-color: $yellow;
+    box-sizing: border-box;
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0px 5px 10px -2px rgba(0, 0, 0, 0.3);
+    h2 {
+        font-size: 3rem;
+        margin-bottom: 30px;
+    }
+    .explain {
+        font-family: $ja;
+        margin-bottom: 50px;
+    }
+}
+
+/**
+* /main ****************************************************************************************************
+**/
+
+/**
+* footer ****************************************************************************************************
+**/
+footer {
+    position: relative;
+    width: 100vw;
+    bottom: 0;
+    height: 50px;
+    background-color: $yellow;
+    small {
+        position: absolute;
+        bottom: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+}

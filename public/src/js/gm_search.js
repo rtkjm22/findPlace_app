@@ -71,6 +71,20 @@ function initMap() {
             lat: position.coords.latitude,
             lng: position.coords.longitude,
         };
+        let mapOptions = {
+            zoom: zoom_level,
+            center: pos,
+        }
+        var myLocation = new google.maps.Marker({
+            map: map,
+            position: mapOptions.center,
+            animation: google.maps.Animation.DROP,
+            title: '現在地',
+            icon: {
+                url: '/src/img/my_location.svg',
+                scaledSize: new google.maps.Size(32, 32),
+            },
+        });
         infowindow.setPosition(pos);
         infowindow.setContent('現在地を取得しました。');
         infowindow.open(map);
@@ -87,8 +101,7 @@ function initMap() {
             if (status === google.maps.places.PlacesServiceStatus.OK) {
                 const list = document.getElementById('results');
                 for (let i=0;i<results.length;i++) {
-                    createMarker(results[i]);
-                    console.log(results[i]);
+                    createMarker(results[i], results[i].name);
                     let li = document.createElement('li');
                     li.innerHTML = '<a href="https://maps.google.co.jp/maps?q=' + results[i].name + results[i].vicinity + '">' + results[i].name + '</a>'
                     list.appendChild(li);
@@ -101,11 +114,12 @@ function initMap() {
         infowindow.open(map);
     });
 
-    function createMarker(item) {
+    function createMarker(item, name) {
         var marker = new google.maps.Marker({
             map: map,
             position: item.geometry.location,
-            animation: google.maps.Animation.DROP
+            animation: google.maps.Animation.DROP,
+            title: name,
         });
         marker.addListener('click', function () {
             infowindow.setContent(item.name);
@@ -113,3 +127,38 @@ function initMap() {
         });
     }
 }
+
+// (() => {
+//     var ul = document.getElementById('results');
+//     var items= [
+//         'ローソン 高崎中泉町店',
+//         'セブンイレブン　高崎中泉町店',
+//         'セブンイレブン　高崎大八木町店',
+//         'ミニストップ 高崎大八木店',
+//         '葉面酒場　Naruze',
+//         'ENISHI',
+//         'Restaurant Olivier',
+//         'Casa Familiar',
+//         'ローソン 高崎中泉町店',
+//         'セブンイレブン　高崎中泉町店',
+//         'セブンイレブン　高崎大八木町店',
+//         'ミニストップ 高崎大八木店',
+//         '葉面酒場　Naruze',
+//         'ENISHI',
+//         'Restaurant Olivier',
+//         'Casa Familiar',
+//         'ローソン 高崎中泉町店',
+//         'セブンイレブン　高崎中泉町店',
+//         'セブンイレブン　高崎大八木町店',
+//         'ミニストップ 高崎大八木店',
+//         '葉面酒場　Naruze',
+//         'ENISHI',
+//         'Restaurant Olivier',
+//         'Casa Familiar',
+//     ];
+//     for (let i=0;i<items.length;i++) {
+//         let item = document.createElement('li');
+//         item.innerHTML = '<a href="#">' + items[i] + '</a>'
+//         ul.appendChild(item);
+//     }
+// })();
