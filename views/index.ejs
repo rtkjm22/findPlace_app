@@ -13,66 +13,68 @@
     <link rel="stylesheet" type="text/css" href="./src/css/style.css">
 </head>
 <body>
-<style>
-    #map {
-        height: 400px;
-        width: 600px;
-    }
-</style>
-    <div id="map"></div>
     <header>
-        <h1>Find What You Want</h1>
+        <h1>Find What You Want.</h1>
         <div class="hum">
             <span></span>
             <span></span>
             <span></span>
         </div>
-        <div class="header-nav">
+        <div class="header_nav">
             <nav>
                 <ul>
-                    <li><a href="#">Top</a></li>
-                    <li><a href="#">MyPage</a></li>
-                    <li><a href="#">Login/SignUp</a></li>
-                    <li><a href="#">Contact</a></li>
+                    <li><a href="#">TOP</a></li>
+                    <li><a href="#">CONTACT</a></li>
+                    <li><a href="#">LOGIN</a></li>
+                    <li class="signup"><a href="#">SIGN UP</a></li>
                 </ul>
             </nav>
         </div>
         <div class="overlay"></div>
     </header>
-
+    
     <main>
-        <div class="main-wrapper">
-            <div class="map"></div>
+        <div class="main_wrapper">
+            <div id="map"></div>
             <div class="content">
                 <h2><%= title %></h2>
-                <p>説明文</p>
-                <form action="/" method="post">
-                    <label for="place"></label>
-                    <select name="place" id="place">
-                        <option value="1">category</option>
-                        <option value="2">category</option>
-                        <option value="3">category</option>
-                        <option value="4">category</option>
-                        <option value="5">category</option>
-                        <option value="6">category</option>
-                        <option value="7">category</option>
-                        <option value="8">category</option>
-                        <option value="9">category</option>
-                    </select>
-                    <input type="submit" value="Search">
+                <p class="explain"><%= content %></p>
+                <form action="/search" method="GET" id="form">
+                    <div class="form_item">
+                        <label for="type">TYPES</label>
+                        <select name="type" id="type">
+                            <option value="0" hidden>タイプ検索</option>
+                            <option value="1">コンビニエンスストア</option>
+                            <option value="2">テイクアウトができる飲食店</option>
+                            <option value="3">ATM</option>
+                            <option value="4">鉄道・地下鉄</option>
+                            <option value="5">バス停</option>
+                            <option value="6">タクシー</option>
+                            <option value="7">レストラン</option>
+                            <option value="8">カフェ</option>
+                            <option value="9">パン屋</option>
+                        </select>
+                    </div>
+                    <div class="form_item">
+                        <label for="keyword">KEYWORDS</label>
+                        <input type="text" name="keyword" id="keyword" placeholder="キーワード検索">
+                    </div>
+                    <div class="form_item">
+                        <label for="range">DISTANCE (m)</label>
+                        <input type="range" name="range" id="range" min="0" max="2000" step="100" value="500">
+                        <p id="range_target">500m</p>
+                    </div>
+                    <input id="submit" type="submit" value="Search">
                 </form>
             </div>
         </div>
     </main>
 
-
     <footer>
-        <small>©2021 R.Kojima All rights reserved.</small>
+        <small>©2021 Ryota Kojima All rights reserved.</small>
     </footer>
-    <script>
-        
-    </script>
-    <script type="text/javascript" src="./src/js/googleMap.js"> </script>
+
+    <script type="text/javascript" src="./src/js/gm_index.js"> </script>
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=<%= key %>&callback=initMap"></script>
 </body>
 </html>
