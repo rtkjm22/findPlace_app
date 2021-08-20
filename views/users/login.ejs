@@ -26,25 +26,56 @@
                 <ul>
                     <li><a href="#">TOP</a></li>
                     <li><a href="#">CONTACT</a></li>
-                    <li><a href="#">LOGIN</a></li>
+                    <li><a href="/">LOGIN</a></li>
                     <li class="signup"><a href="#">SIGN UP</a></li>
                 </ul>
             </nav>
         </div>
         <div class="overlay"></div>
     </header>
+
     
     <main>
         <h2 class="title"><%= title %></h2>
         <p class="explain"><%= content %></p>
 
         <ul class="err_msg">
-            <% if (err !== null) {for (let i in err.errors) { %>
-                <li><%= err.errors[i].message %></li>
-            <% }} %>
+
+            <li>エラーです1</li>
+            <li>エラーです2</li>
+            <li>エラーです3</li>
+            <li>エラーです4</li>
+            <li>エラーです5</li>
         </ul>
 
-        
+        <form action="/users/login" method="POST" id="form">
+
+            <div class="form_item">
+                <label for="name">User ID(メールアドレス)</label>
+                <input type="email" name="email" class="email" value="" autocomplete="email" inputmode="email" placeholder="example@gmail.com">
+                <ul class="form_err">
+
+                    <li>エラーです。＿＿1</li>
+                    <li>エラーです。＿＿2</li>
+                    <li>エラーです。＿＿3</li>
+                </ul>
+            </div>
+
+            <div class="form_item">
+                <label for="pass">PASS</label>
+                <input type="password" name="pass" class="pass" value="" autocomplete="current-password" autocapitalize="off" placeholder="パスワード">
+                <ul class="form_err">
+
+                    <li>エラーです。＿＿1</li>
+                    <li>エラーです。＿＿2</li>
+                    <li>エラーです。＿＿3</li>
+                </ul>
+            </div>
+
+            <input type="submit" value="新規登録" id="submit">
+        </form>
+
+
     </main>
 
     <footer>

@@ -2,80 +2,11 @@
 
 @use "variable" as v;
 @use "base";
+@use "one_card";
 
-main {
-    max-width: 800px;
-    padding: 0 20px;
-}
-.title {
-    text-align: center;
-    font-size: 3rem;
-    margin-bottom: 30px;
-}
-.explain {
-    text-align: center;
-    font-family: v.$ja;
-    margin-bottom: 50px;
-    padding: 0 20px;
 
-}
-.err_msg {
-    list-style-position: inside;
-    list-style-type: disc;
-    margin-bottom: 50px;
-    padding-left: 50px;
-    li {
-        color: v.$red;
-        font-size: 1.1rem;
-        margin-bottom: 5px;
-    }
-}
-form {
-    background-color: #f5f583;
-    padding: 50px;
-    border-radius: 20px;
-    box-shadow: v.$shadow;
-    @include v.md(sp) {
-        padding: 20px;
-    }
-}
-.form_item {
-    margin-bottom: 30px;
-    label {
-        display: block;
-        margin-bottom: 10px;
-    }
-    input {
-        box-sizing: border-box;
-        border-radius: 10px;
-        padding: 10px 20px;
-        width: 100%;
-        margin-bottom: 10px;
-    }
-    @include v.md(sp) {
-        margin-bottom: 15px;
-    }
-}
-.form_err {
-    list-style-position: inside;
-    list-style-type: disc;
-    li {
-        color: v.$red;
-        margin-bottom: 5px;
-    }
-}
+
+
 .pickr {
     margin-left: 5px;
-}
-#submit {
-    padding: 10px 20px;
-    background-color: white;
-    font-family: v.$en;
-    border: 3px solid v.$gray;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: all .3s;
-    &:hover {
-        background-color: v.$yellow;
-    }
 }
