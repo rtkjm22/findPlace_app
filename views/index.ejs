@@ -14,7 +14,7 @@
 </head>
 <body>
     <header>
-        <h1>Find What You Want.</h1>
+        <h1>FWYW</h1>
         <div class="hum">
             <span></span>
             <span></span>
@@ -26,7 +26,7 @@
                     <li><a href="#">TOP</a></li>
                     <li><a href="#">CONTACT</a></li>
                     <li><a href="#">LOGIN</a></li>
-                    <li class="signup"><a href="#">SIGN UP</a></li>
+                    <li class="signup"><a href="/users/signup">SIGN UP</a></li>
                 </ul>
             </nav>
         </div>
@@ -34,11 +34,11 @@
     </header>
     
     <main>
+        <h2 class="title"><%= title %></h2>
+        <p class="explain">「近くをよりかんたんに、よりシンプルに」- 「近く」に特化した地図サイト</p>
         <div class="main_wrapper">
             <div id="map"></div>
             <div class="content">
-                <h2><%= title %></h2>
-                <p class="explain"><%= content %></p>
                 <form action="/search" method="GET" id="form">
                     <div class="form_item">
                         <label for="type">TYPES</label>
@@ -75,6 +75,6 @@
     </footer>
 
     <script type="text/javascript" src="./src/js/gm_index.js"> </script>
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=<%= key %>&callback=initMap"></script>
+    <!-- <script async defer src="https://maps.googleapis.com/maps/api/js?key=<%= key %>&callback=initMap"></script> -->
 </body>
 </html>

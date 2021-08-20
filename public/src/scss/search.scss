@@ -1,6 +1,8 @@
 @charset "utf-8";
 
-@use "base" as b;
+@use "variable" as v;
+@use "base";
+@use "two_cards";
 
 #results {
     list-style: decimal inside;
@@ -10,7 +12,7 @@
     }
     a {
         position: relative;
-        font-family: b.$ja;
+        font-family: v.$ja;
         font-size: 1.3rem;
         &::before {
             content: '';
@@ -20,7 +22,7 @@
             transform: translateX(-50%);
             width: 0;
             height: 3px;
-            background-color: b.$gray;
+            background-color: v.$gray;
             transition: all .5s;
         }
         &:hover::before {

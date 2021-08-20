@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="content-type" content="text/html">
+    <title><%= title %></title>
+    <link rel="shortcut icon" href="../src/img/favicon.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&family=M+PLUS+Rounded+1c&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../src/css/reset.css">
+    <link rel="stylesheet" type="text/css" href="/styles/themes/classic.min.css">
+    <link rel="stylesheet" type="text/css" href="../src/css/signup.css">
+</head>
+<body>
+
+    <header>
+        <h1>FWYW</h1>
+        <div class="hum">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="header_nav">
+            <nav>
+                <ul>
+                    <li><a href="#">TOP</a></li>
+                    <li><a href="#">CONTACT</a></li>
+                    <li><a href="#">LOGIN</a></li>
+                    <li class="signup"><a href="#">SIGN UP</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="overlay"></div>
+    </header>
+    
+    <main>
+        <h2 class="title"><%= title %></h2>
+        <p class="explain"><%= content %></p>
+
+        <ul class="err_msg">
+            <% if (err !== null) {for (let i in err.errors) { %>
+                <li><%= err.errors[i].message %></li>
+            <% }} %>
+        </ul>
+
+        <form action="/users/signup" method="POST" id="form">
+            <div class="form_item">
+                <label for="name">NAME</label>
+                <input type="text" name="name" class="name" value="<%= form.name %>" autocomplete="name" inputmode="text" placeholder="田中 太郎">
+                <ul class="form_err">
+                    <% if (err !== null) {for (let i in err.get("name")) { %>
+                        <li><%= err.get("name")[i].message %></li>
+                    <% }} %>
+                </ul>
+            </div>
+            <div class="form_item">
+                <label for="age">AGE</label>
+                <input type="number" name="age" class="age" value="<%= form.age %>" autocomplete="on" inputmode="numeric" placeholder="20">
+                <ul class="form_err">
+                    <% if (err !== null) {for (let i in err.get("age")) { %>
+                        <li><%= err.get("age")[i].message %></li>
+                    <% }} %>
+                </ul>
+            </div>
+            <div class="form_item">
+                <label for="mail">MAIL</label>
+                <input type="email" name="mail" class="mail" value="<%= form.mail %>" autocomplete="email" autocapitalize="off" autocorrect="off" inputmode="email" placeholder="example@gmail.com">
+                <ul class="form_err">
+                    <% if (err !== null) {for (let i in err.get("mail")) { %>
+                        <li><%= err.get("mail")[i].message %></li>
+                    <% }} %>
+                </ul>
+            </div>
+            <div class="form_item">
+                <label for="pass">PASS</label>
+                <input type="password" name="pass" class="pass" value="<%= form.pass %>" autocomplete="new-password" autocapitalize="off" placeholder="パスワード">
+                <ul class="form_err">
+                    <% if (err !== null) {for (let i in err.get("pass")) { %>
+                        <li><%= err.get("pass")[i].message %></li>
+                    <% }} %>
+                </ul>
+            </div>
+            <div class="form_item">
+                <label for="pass2">PASS2</label>
+                <input type="password" name="pass2" class="pass2" value="<%= form.pass2 %>" autocomplete="new-password" autocapitalize="off" placeholder="パスワード(確認用)">
+                <ul class="form_err">
+                    <% if (err !== null) {for (let i in err.get("pass2")) { %>
+                        <li><%= err.get("pass2")[i].message %></li>
+                    <% }} %>
+                </ul>
+            </div>
+
+            <div class="form_item">
+                <label for="color">COLOR</label>
+                <div id="pickr"></div>
+                <ul class="form_err">
+                    <% if (err !== null) {for (let i in err.get("color")) { %>
+                        <li><%= err.get("color")[i].message %></li>
+                    <% }} %>
+                </ul>
+            </div>
+
+            <div class="form_item">
+                <label for="secret">SECRET</label>
+                <input type="text" name="secret" class="secret" value="<%= form.secret %>" autocomplete="on" autocapitalize="off" autocorrect="off" inputmode="text" placeholder="秘密の合言葉">
+                <ul class="form_err">
+                    <% if (err !== null) {for (let i in err.get("secret")) { %>
+                        <li><%= err.get("secret")[i].message %></li>
+                    <% }} %>
+                </ul>
+            </div>
+
+
+            <input type="submit" value="新規登録" id="submit">
+        </form>
+    </main>
+
+    <footer>
+            <small>©2021 Ryota Kojima All rights reserved.</small>
+    </footer>
+
+    <script src="/styles/pickr.min.js"></script>
+    <script src="../src/js/signup.js"></script>
+</body>
+</html>

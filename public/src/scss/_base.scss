@@ -1,25 +1,10 @@
 @charset "utf-8";
 
-$ja: 'M PLUS Rounded 1c', sans-serif;;
-$en: 'Comfortaa', cursive;
-$gray: #414141;
-$yellow: #ffff7d;
-
-$breakpoints: (
-    'tab': "screen and (max-width:1250px)",
-    'sp': "screen and (max-width:900px)",
-);
-//$breakpoint: pcで初期設定している
-@mixin md($breakpoint: sp) {
-    @media #{map-get($breakpoints, $breakpoint)} {
-        @content;
-    }
-}
-
+@use "variable" as v;
 
 h1, h2, h3, p, span, label, small, a, input {
-    font-family: $en;
-    color: $gray;
+    font-family: v.$en;
+    color: v.$gray;
 }
 
 /**
@@ -27,10 +12,14 @@ h1, h2, h3, p, span, label, small, a, input {
 **/
 header {
     position: relative;
+    margin-bottom: 100px;
     width: 100vw;
     h1 {
-        font-size: 4rem;
+        font-size: 3.5rem;
         margin: 20px 0 0 80px;
+        @include v.md(tab) {
+            margin: 20px 0 0 20px;
+        }
     }
 }
 .hum {
@@ -63,7 +52,7 @@ header {
     position: fixed;
     top: 20px;
     right: 5%;
-    width: 30%;
+    width: 400px;
     ul {
         display: flex;
         width: 100%;
@@ -93,12 +82,15 @@ header {
             width: 100%;
         }
     }
+    a {
+        white-space: nowrap;
+    }
     .signup {
-        background-color: $yellow;
+        background-color: v.$yellow;
         border: 3px solid white;
         transition: all .3s;
         &:hover {
-            border: 3px solid $yellow;
+            border: 3px solid v.$yellow;
             background-color: white;
         }
         &::before {
@@ -107,50 +99,15 @@ header {
     }
 
 }
-/**
-* /header ****************************************************************************************************
-**/
 
 /**
 * main ****************************************************************************************************
 **/
-.main_wrapper {
-    margin: 100px auto;
-    padding: 0 20px;
-    display: flex;
-    justify-content: space-around;
-    align-items: flex-start;
-    max-width: 1400px;
-}
-#map {
-    width: 600px;
-    height: 500px;
-    background-color: $gray;
-    border-radius: 20px;
-    border: 3px solid $yellow;
-    overflow: hidden;
-    box-shadow: 0px 5px 10px -2px rgba(0, 0, 0, 0.3);
-}
-.content {
-    width: 600px;
-    background-color: $yellow;
-    box-sizing: border-box;
-    border-radius: 20px;
-    padding: 20px;
-    box-shadow: 0px 5px 10px -2px rgba(0, 0, 0, 0.3);
-    h2 {
-        font-size: 3rem;
-        margin-bottom: 30px;
-    }
-    .explain {
-        font-family: $ja;
-        margin-bottom: 50px;
-    }
-}
 
-/**
-* /main ****************************************************************************************************
-**/
+main {
+    max-width: 1400px;
+    margin: 0 auto 100px;
+}
 
 /**
 * footer ****************************************************************************************************
@@ -158,13 +115,19 @@ header {
 footer {
     position: relative;
     width: 100vw;
-    bottom: 0;
     height: 50px;
-    background-color: $yellow;
+    background-color: v.$yellow;
     small {
-        position: absolute;
-        bottom: 10px;
-        left: 50%;
-        transform: translateX(-50%);
+        display: block;
+        text-align: center;
+        line-height: 50px;
+    }
+
+    @include v.md(sp) {
+        small {
+            white-space: nowrap;
+            font-size: .5rem;
+        }
     }
 }
+
