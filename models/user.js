@@ -32,8 +32,8 @@ module.exports = (sequelize, DataTypes) => {
                     msg: "数字(整数)を入力してください。"
                 },
                 min: {
-                    args: [0],
-                    msg: "ゼロ以上の数字(整数)が必要です。"
+                    args: [1],
+                    msg: "1以上の数字(整数)が必要です。"
                 },
                 max: {
                     args: [120],
@@ -70,13 +70,14 @@ module.exports = (sequelize, DataTypes) => {
                 notNull: {
                     msg: "パスワードを入力してください。"
                 },
-                isAlphanumeric: {
-                    msg: "半角英数字で入力してください。"
-                },
                 len: {
-                    args: [1, 20],
-                    msg: "パスワードは1〜20文字以内で入力してください。"
+                    args: [8, 70],
+                    msg: "パスワードは8文字以上60文字未満で入力してください。"
                 },
+                not: {
+                    args: ["\$[0-9].\$[0-9].\$[0-9a-zA-Z+-=.\/]+", "i"],
+                    msg: "パスワードの形式が正しくありません。"
+                }
             }
         },
         color: {
@@ -91,7 +92,7 @@ module.exports = (sequelize, DataTypes) => {
                 },
                 len: {
                     args: [1, 20],
-                    msg: "イメージカラーは1〜20文字以内で入力してください。"
+                    msg: "イメージカラーを選択してください。"
                 },
             }
         },

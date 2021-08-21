@@ -48,7 +48,7 @@
         <form action="/users/signup" method="POST" id="form">
             <div class="form_item">
                 <label for="name">NAME</label>
-                <input type="text" name="name" class="name" value="<%= form.name %>" autocomplete="name" inputmode="text" placeholder="田中 太郎">
+                <input type="text" name="name" id="name" value="<%= form.name %>" autocomplete="name" inputmode="text" placeholder="田中 太郎">
                 <ul class="form_err">
                     <% if (err !== null) {for (let i in err.get("name")) { %>
                         <li><%= err.get("name")[i].message %></li>
@@ -57,7 +57,7 @@
             </div>
             <div class="form_item">
                 <label for="age">AGE</label>
-                <input type="number" name="age" class="age" value="<%= form.age %>" autocomplete="on" inputmode="numeric" placeholder="20">
+                <input type="number" name="age" id="age" value="<%= form.age %>" autocomplete="on" inputmode="numeric" placeholder="20">
                 <ul class="form_err">
                     <% if (err !== null) {for (let i in err.get("age")) { %>
                         <li><%= err.get("age")[i].message %></li>
@@ -66,7 +66,7 @@
             </div>
             <div class="form_item">
                 <label for="mail">MAIL</label>
-                <input type="email" name="mail" class="mail" value="<%= form.mail %>" autocomplete="email" autocapitalize="off" autocorrect="off" inputmode="email" placeholder="example@gmail.com">
+                <input type="email" name="mail" id="mail" value="<%= form.mail %>" autocomplete="email" autocapitalize="off" autocorrect="off" inputmode="email" placeholder="example@gmail.com">
                 <ul class="form_err">
                     <% if (err !== null) {for (let i in err.get("mail")) { %>
                         <li><%= err.get("mail")[i].message %></li>
@@ -75,7 +75,7 @@
             </div>
             <div class="form_item">
                 <label for="pass">PASS</label>
-                <input type="password" name="pass" class="pass" value="<%= form.pass %>" autocomplete="new-password" autocapitalize="off" placeholder="パスワード">
+                <input type="password" name="pass" id="pass" value="<%= form.pass %>" autocomplete="new-password" autocapitalize="off" placeholder="パスワード">
                 <ul class="form_err">
                     <% if (err !== null) {for (let i in err.get("pass")) { %>
                         <li><%= err.get("pass")[i].message %></li>
@@ -84,7 +84,7 @@
             </div>
             <div class="form_item">
                 <label for="pass2">PASS2</label>
-                <input type="password" name="pass2" class="pass2" value="<%= form.pass2 %>" autocomplete="new-password" autocapitalize="off" placeholder="パスワード(確認用)">
+                <input type="password" name="pass2" id="pass2" value="" autocomplete="new-password" autocapitalize="off" placeholder="パスワード(確認用)">
                 <ul class="form_err">
                     <% if (err !== null) {for (let i in err.get("pass2")) { %>
                         <li><%= err.get("pass2")[i].message %></li>
@@ -95,6 +95,7 @@
             <div class="form_item">
                 <label for="color">COLOR</label>
                 <div id="pickr"></div>
+                <input type="hidden" id="color" name="color" value="<%= form.color %>">
                 <ul class="form_err">
                     <% if (err !== null) {for (let i in err.get("color")) { %>
                         <li><%= err.get("color")[i].message %></li>
@@ -104,7 +105,7 @@
 
             <div class="form_item">
                 <label for="secret">SECRET</label>
-                <input type="text" name="secret" class="secret" value="<%= form.secret %>" autocomplete="on" autocapitalize="off" autocorrect="off" inputmode="text" placeholder="秘密の合言葉">
+                <input type="text" name="secret" id="secret" value="<%= form.secret %>" autocomplete="on" autocapitalize="off" autocorrect="off" inputmode="text" placeholder="秘密の合言葉">
                 <ul class="form_err">
                     <% if (err !== null) {for (let i in err.get("secret")) { %>
                         <li><%= err.get("secret")[i].message %></li>
