@@ -23,9 +23,6 @@ module.exports = {
       pass: {
         type: Sequelize.STRING
       },
-      pass2: {
-        type: Sequelize.STRING
-      },
       secret: {
         type: Sequelize.STRING
       },

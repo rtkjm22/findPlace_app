@@ -79,25 +79,6 @@ module.exports = (sequelize, DataTypes) => {
                 },
             }
         },
-        pass2: {
-            type: DataTypes.STRING,
-            allowNull: false,
-            validate: {
-                notEmpty: {
-                    msg: "パスワード(確認用)を入力してください。"
-                },
-                notNull: {
-                    msg: "パスワード(確認用)を入力してください。"
-                },
-                isAlphanumeric: {
-                    msg: "半角英数字で入力してください。"
-                },
-                len: {
-                    args: [1, 20],
-                    msg: "パスワード(確認用)は1〜20文字以内で入力してください。"
-                },
-            }
-        },
         color: {
             type: DataTypes.STRING,
             allowNull: false,
@@ -130,18 +111,7 @@ module.exports = (sequelize, DataTypes) => {
                 },
             }
         }
-    }, {
-        validate: {
-            // パスワードが一致しているか確認
-            compare_pass() {
-                if (this.pass !== this.pass2) {
-                    throw new Error(
-                        "パスワードが一致しませんでした。"
-                    );
-                }
-            },
-        },
-    });
+    }, {});
     User.associate = function (models) {
     // User.hasMany(models.History);
     };
