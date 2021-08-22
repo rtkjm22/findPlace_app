@@ -13,9 +13,48 @@ router.get('/', (req, res, next) => {
 router.get('/login', (req, res, next) => {
     let data = {
         title: 'LOG IN',
-        content: '以下のフォームからログインしてください。'
+        content: '以下のフォームからログインしてください。',
+        err: null
     }
     res.render('users/login', data);
+});
+
+router.post('/login', (req, res, next) => {
+    db.User.findOne({
+        where: {
+            mail: req.body.email,
+        }
+    }).then( async (usr) => {
+        const compared = await bcrypt.compare(req.body.pass, usr.pass);
+        if (!compared) {
+            throw new Error("IDかパスワードが正しくありません。");
+        } else {
+            return;
+        }
+
+        // if (usr != null) {
+        //     req.session.login = usr;
+        //     let back = req.session.back;
+        //     if (back == null) {
+        //         back = '/';
+        //     }
+        //     res.redirect(back);
+        // } else {
+        //     let data = {
+        //         title: 'LOG IN',
+        //         content: '以下のフォームからログインしてください。'
+        //     }
+        //     res.render('users/login', data);
+        // }
+    }).catch(err => {
+        let data = {
+            title: 'LOG IN',
+            content: '以下のフォームからログインしてください。',
+            err: err.message
+        }
+        console.log("this is " + err);
+        res.render('users/login', data);
+    })
 });
 
 
