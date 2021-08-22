@@ -36,36 +36,24 @@ const pickr = Pickr.create({
         },
     },
 });
-const color = document.getElementById('color');
-pickr.on('save', instance => {
-    if (color.value) {
-        color.value = instance.toHEXA().toString();
-    } else {
-        color.setAttribute('value', instance.toHEXA().toString());
-    }
-    console.log(instance.toHEXA().toString());
-});
 // /pickr
 
 
-
 // リアルタイムバリデーション
-const submit = document.getElementById('submit');
-submit.disabled = false;
-let flag = false;
+
 const red = "#fa4e4e";
 const black = "#414141";
 
-const name = document.getElementById('name');
+const username = document.getElementById('name');
 const age = document.getElementById('age');
 const mail = document.getElementById('mail');
 const pass = document.getElementById('pass');
 const pass2 = document.getElementById('pass2');
-// color
+const color = document.getElementById('color');
 const secret = document.getElementById('secret');
 
-// name
-name.addEventListener('input', function() {
+// username
+username.addEventListener('input', function() {
     let val = this.value;
     if (
         typeof(val) === "string" && 
@@ -74,13 +62,12 @@ name.addEventListener('input', function() {
         val.length !== 0 &&
         val.length <= 20
     ) {
-        name.style.color = black;
+        username.style.color = black;
     } else {
-        name.style.color = red;
-        flag = true;
+        username.style.color = red;
     }
 });
-// /name
+// /username
 
 // age
 age.addEventListener('input', function() {
@@ -96,7 +83,6 @@ age.addEventListener('input', function() {
         age.style.color = black;
     } else {
         age.style.color = red;
-        flag = true;
     }
 });
 // /age
@@ -106,61 +92,40 @@ age.addEventListener('input', function() {
 const check_mail = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 mail.addEventListener('input', function() {
     let val = this.value;
-    let mail_flag = false;
-
     if (
         typeof(val) === "string" && 
         val !== "null" && 
         val !== "undefined" && 
+        val.match(check_mail) &&
         val.length !== 0 &&
-        val.length <= 50
+        val.length <= 50 
     ) {
-        mail_flag = false;
         mail.style.color = black;
     } else {
-        mail_flag = true;
         mail.style.color = red;
-        console.log('hoge');
     }
-
-    if (!val.match(check_mail)) {
-        mail_flag = true;
-        mail.style.color = red;
-        console.log('メール形式で入力してください。');
-    } else {
-        mail_flag = false;
-        mail.style.color = black;
-    }
-    console.log(flag);
 });
 // /mail
 
 // password
-// 半角英数字のみ(colorでも利用)
-const check_str = '/^[A-Za-z0-9]+$/'; 
+// 8文字以上半角英数字のみ(colorでも利用)
+const check_str = /^([a-zA-Z0-9]{8,})$/; 
 check_pass(pass, pass2);
 check_pass(pass2, pass);
 function check_pass(el, target) {
     el.addEventListener('input', function () {
         let val = this.value;
-        if (!val.match(check_str)) {
-            flag = true;
-            el.style.color = red;
-            target.style.color = red;
-        }
-
         if (
             val === target.value &&
             typeof(val) === "string" && 
             val !== "null" && 
             val !== "undefined" && 
-            8 <= val.length &&
+            val.match(check_str) &&
             val.length <= 20
         ) {
             el.style.color = black;
             target.style.color = black;
         } else {
-            flag = true;
             el.style.color = red;
             target.style.color = red;
         }
@@ -169,25 +134,26 @@ function check_pass(el, target) {
 // /password
 
 // color
-color.addEventListener('input', function() {
+pickr.on('save', instance => {
+    color.value = instance.toHEXA().toString();
+    console.log(color.value);
+});
+// /color 
+
+// secret
+secret.addEventListener('input', function() {
     let val = this.value;
-
-    if (!val.match(check_str)) {
-        flag = true;
-    }
-
     if (
         typeof(val) === "string" && 
         val !== "null" && 
         val !== "undefined" && 
-        4 <= val.length &&
-        val.length <= 9
+        val.length !== 0 &&
+        val.length <= 20
     ) {
-        return;
+        secret.style.color = black;
     } else {
-        flag = true;
+        secret.style.color = red;
     }
 });
-// /color 
-
+// /secret
 

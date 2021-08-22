@@ -34,7 +34,6 @@ router.get('/signup', (req, res, next) => {
 router.post('/signup', async (req, res, next) => {
     const salt = 10;
     const hashed_pass = await bcrypt.hash(req.body.pass, 10);
-    console.log('ハッシュ値は' + hashed_pass);
     let form = {
         name:   req.body.name,
         age:    req.body.age,
@@ -43,6 +42,7 @@ router.post('/signup', async (req, res, next) => {
         color:  req.body.color,
         secret: req.body.secret
     };
+    console.log(typeof(form.color));
     
     db.sequelize.sync()
         .then(() => db.User.create(form))
@@ -53,7 +53,7 @@ router.post('/signup', async (req, res, next) => {
             form.pass = '';
             let data = {
                 title: 'SIGN UP',
-                content: '以下のフォームを入力して新規登録してください。',
+                content: '以下のフォームをすべて入力して新規登録してください。',
                 form: form,
                 err: err
             }

@@ -65,6 +65,7 @@ header {
         box-sizing: border-box;
         padding: 10px 20px;
         border-radius: 10px;
+        list-style: none;
         &:hover {
             opacity: .7;;
         }
@@ -84,6 +85,7 @@ header {
     }
     a {
         white-space: nowrap;
+        text-decoration: none;
     }
     .signup {
         background-color: v.$yellow;
