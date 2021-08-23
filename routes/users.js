@@ -29,23 +29,13 @@ router.post('/login', (req, res, next) => {
         if (!compared) {
             throw new Error("IDかパスワードが正しくありません。");
         } else {
-            return;
+            req.session.login = usr;
+            let back = req.session.back;
+            if (back == null) {
+                back = '../home';
+            }
+            res.redirect(back);
         }
-
-        // if (usr != null) {
-        //     req.session.login = usr;
-        //     let back = req.session.back;
-        //     if (back == null) {
-        //         back = '/';
-        //     }
-        //     res.redirect(back);
-        // } else {
-        //     let data = {
-        //         title: 'LOG IN',
-        //         content: '以下のフォームからログインしてください。'
-        //     }
-        //     res.render('users/login', data);
-        // }
     }).catch(err => {
         let data = {
             title: 'LOG IN',
@@ -101,5 +91,6 @@ router.post('/signup', async (req, res, next) => {
         });
     
 });
+
 
 module.exports = router;

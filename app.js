@@ -7,11 +7,10 @@ var session = require('express-session');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+var homeRouter  = require('./routes/home');
 
 
 var app = express();
-
-
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -24,8 +23,9 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/styles', express.static(__dirname + '/node_modules/@simonwep/pickr/dist/'));
 
+// session_express オプション設定
 var session_opt = {
-    secret: 'findPlace',
+    secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: false,
     cookie: {
@@ -36,6 +36,7 @@ app.use(session(session_opt));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/home', homeRouter);
 
 
 // catch 404 and forward to error handler
