@@ -1,0 +1,40 @@
+@charset "utf-8";
+
+@use "reset";
+@use "variable" as v;
+@use "home_nav";
+@use "two_cards";
+@use "form";
+
+.main_wrapper {
+  margin-bottom: 40px;
+}
+
+.history {
+  max-width: 1400px;
+  margin: 0 20px;
+  padding: 50px;
+  border-radius: 20px;
+  background-color: v.$yellow;
+  box-shadow: v.$shadow;
+  h2 {
+    font-size: 2rem;
+    margin-bottom: 30px;
+  }
+}
+
+.history_list {
+  li {
+    border-bottom: 2px solid v.$gray;
+    margin-bottom: 10px;
+    padding: 20px 0 10px;
+    list-style-position: inside;
+  } 
+  a {
+    font-size: 1.2rem;
+    padding-left: 10px;
+    &:hover {
+      opacity: .7;
+    }
+  }
+}

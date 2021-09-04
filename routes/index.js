@@ -11,11 +11,17 @@ const key = process.env.API_KEY;
 
 /* GET home page. */
 router.get('/', (req, res, next) => {
-    const data = {
-        title: 'Find What You Want',
-        key: key,
-    }
-    res.render('index', data);
+
+  if (req.session.login) {
+    res.redirect('/home');
+    return;
+  }
+
+  const data = {
+    title: 'Find What You Want',
+    key: key,
+  }
+  res.render('index', data);
 });
 
 router.get('/search', (req, res, next) => {
