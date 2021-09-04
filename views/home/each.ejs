@@ -38,7 +38,7 @@
         <div class="main_wrapper">
             <div id="map"></div>
             <div class="content">
-                <form action="/search" method="GET" id="form">
+                <form action="<%= path %>" method="POST" id="form">
                     <div class="form_item">
                         <label for="type">TYPES</label>
                         <select name="type" id="type">
@@ -70,17 +70,12 @@
         <div class="history">
           <h2>検索履歴</h2>
           <ol class="history_list">
-            <li><a>東京都港区青葉台222-222</a></li>
-            <li><a>東京都港区青葉台222-222</a></li>
-            <li><a>東京都港区青葉台222-222</a></li>
-            <li><a>東京都港区青葉台222-222</a></li>
-            <li><a>東京都港区青葉台222-222</a></li>
-            <li><a>東京都港区青葉台222-222</a></li>
-            <li><a>東京都港区青葉台222-222</a></li>
+            <% for (var i in history) { %>
+              <li><a href="#"><%= history[i].lng %>---<%= history[i].lat %></a></li>
+            <% } %>
           </ol>
         </div>
     </main>
-
     <footer>
         <small>©2021 Ryota Kojima All rights reserved.</small>
     </footer>

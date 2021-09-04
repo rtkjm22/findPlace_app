@@ -1,5 +1,6 @@
 "use strict";
 
+
 let params = (new URL(document.location)).searchParams;
 
 let user_lat;
@@ -22,8 +23,8 @@ let types = [
 ];
 
 if (params) {
-    user_lat = parseInt(params.get('lat'), 10);
-    user_lng = parseInt(params.get('lng'), 10);
+    user_lat = parseFloat(params.get('lat'), 10);
+    user_lng = parseFloat(params.get('lng'), 10);
     range    = parseInt(params.get('range'), 10);
     if (range <= 200) {
         zoom_level = 16;
@@ -46,6 +47,7 @@ if (params) {
     user_lng = 139.7673068;
     range = 500;
 }
+
 
 function initMap() {
     const target = document.getElementById('map');
