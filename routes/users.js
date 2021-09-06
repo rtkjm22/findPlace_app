@@ -23,7 +23,7 @@ router.post('/login', (req, res, next) => {
   db.User.findOne({
       where: {
           mail: req.body.email,
-      }
+      },
   }).then( async (usr) => {
       const compared = await bcrypt.compare(req.body.pass, usr.pass);
       if (!compared) {

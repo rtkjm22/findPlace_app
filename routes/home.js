@@ -4,7 +4,9 @@ const db = require('../models/index');
 const { Op } = require('sequelize');
 const { OPEN_READWRITE } = require('sqlite3');
 const key = process.env.API_KEY;
+const bcrypt = require('bcrypt');
 
+// セッションしているか判定
 function check_session(req, res) {
     if (req.session.login == null) {
         req.session.back = '/users/login';
@@ -15,7 +17,7 @@ function check_session(req, res) {
     }
 }
 
-/* GET users listing. */
+// ホーム -> get ======================================================================================================================
 router.get('/', (req, res, next) => {
   if(check_session(req, res)){ return };
 
@@ -24,9 +26,11 @@ router.get('/', (req, res, next) => {
   const path = `/home/${name}/${age}`;
   res.redirect(path);
 });
+// /ホーム -> get ======================================================================================================================
 
 
 
+// ホーム(セッション開始済み) -> get ======================================================================================================================
 router.get('/:name/:age', (req, res, next) => {
   if (check_session(req, res)) { return };
 
@@ -69,8 +73,9 @@ router.get('/:name/:age', (req, res, next) => {
     console.log(`これはエラーです。${e}`);
   });
 });
+// /ホーム(セッション開始済み) -> get ======================================================================================================================
 
-
+// ホーム(セッション開始済み) -> post ======================================================================================================================
 router.post('/:name/:age', (req, res, next) => {
   if (check_session(req, res)) { return };
 
@@ -99,9 +104,12 @@ router.post('/:name/:age', (req, res, next) => {
       console.log(`エラーです。=>${e}`);
     })
 }); 
+// /ホーム(セッション開始済み) -> post ======================================================================================================================
 
 
 
+
+// 検索結果 -> get ======================================================================================================================
 router.get('/:name/:age/results', (req, res, next) => {
   if (check_session(req, res)) { return };
 
@@ -122,12 +130,112 @@ router.get('/:name/:age/results', (req, res, next) => {
   res.render('home/results', data);
 
 });
+// /検索結果 -> get ======================================================================================================================
 
 
+
+
+// ユーザー情報変更ページ -> get ======================================================================================================================
+router.get('/:name/:age/edit', (req, res, next) => {
+  if (check_session(req, res)) { return };
+
+  const path = `/home/${req.session.login.name}/${req.session.login.age}/edit`;
+  const id = req.session.login.id;
+
+  db.User.findByPk(id)
+  .then( usr => {
+    let form = usr;
+
+    let data = {
+      title: 'update',
+      content: 'コンテント',
+      form: form,
+      path: path,
+      err: null,
+    }
+    res.render('home/edit', data);
+    })
+    
+});
+// /ユーザー情報変更ページ -> get ======================================================================================================================
+
+// ユーザー情報変更ページ -> post ======================================================================================================================
+router.post('/:name/:age/edit', (req, res, next) => {
+  if (check_session(req, res)) { return };
+
+  const path = `/home/${req.session.login.name}/${req.session.login.age}/edit`;
+  const next_path = `/home/${req.session.login.name}/${req.session.login.age}/updated`;
+
+  let form = {
+    name:   req.body.name,
+    age:    req.body.age,
+    mail:   req.body.mail,
+    pass:   req.body.pass,
+    color:  req.body.color,
+  }
+    db.User.findByPk(req.session.login.id)
+      .then( async (usr) => {
+        const compared = await bcrypt.compare(form.pass, usr.pass);
+
+        if (!compared) {
+          throw await new Error("パスワードが正しくありません。");
+        } else {
+          return;
+        }
+      })
+      .then(() => db.User.update({
+        name: form.name,
+        age:  form.age,
+        mail: form.mail,
+        color: form.color,
+      },
+      {
+        where: {id: req.session.login.id}
+      }))
+      .then(() => db.User.findByPk(req.session.login.id))
+      .then((usr) => {
+        req.session.login = usr;
+        res.redirect(next_path);
+      })
+      .catch( err => {
+        console.log('------------------------------------------------------------');
+        console.log(JSON.stringify(err));
+        console.log(err.message);
+        console.log('------------------------------------------------------------');
+        let data = {
+          title: 'update',
+          content: 'コンテント',
+          form: form,
+          path: path,
+          err: err,
+        }
+        res.render('home/edit', data);
+      })
+      .finally(() => {
+        console.log('==============================================================');
+      })
+});
+// ユーザー情報変更ページ -> post ======================================================================================================================
+
+
+
+
+// ユーザー情報変更完了ページ -> get ======================================================================================================================
+router.get('/:name/:age/updated', (req, res, next) => {
+  if (check_session(req, res)) { return };
+  
+  res.redirect('/home');
+});
+// /ユーザー情報変更完了ページ -> get ======================================================================================================================
+
+
+
+
+// マイカラーAPI -> get ======================================================================================================================
 router.get('/color', (req, res, next) => {
   const color = req.session.login.color;
   res.json({color: color});
 });
-
+// /マイカラーAPI -> get ======================================================================================================================
 
 module.exports = router;
