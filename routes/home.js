@@ -35,6 +35,8 @@ router.get('/:name/:age', (req, res, next) => {
   const content = `こんにちは、${name}さん！`;
 
   const mail = req.session.login.mail;
+  const color = req.session.login.color;
+
   db.History.findAll({
     where: {
       userId: mail
@@ -121,6 +123,11 @@ router.get('/:name/:age/results', (req, res, next) => {
 
 });
 
+
+router.get('/color', (req, res, next) => {
+  const color = req.session.login.color;
+  res.json({color: color});
+});
 
 
 module.exports = router;
