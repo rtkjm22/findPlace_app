@@ -16,6 +16,7 @@ router.get('/', (req, res, next) => {
     res.redirect('/home');
     return;
   }
+  
 
   const data = {
     title: 'Find What You Want',

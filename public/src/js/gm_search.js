@@ -21,6 +21,8 @@ let types = [
     'cafe',
     'bakery',
 ];
+let result_num = document.querySelector('.result_num');
+result_num.textContent = 0;
 
 if (params) {
     user_lat = parseFloat(params.get('lat'), 10);
@@ -102,6 +104,7 @@ function initMap() {
         function callback(results, status) {
             if (status === google.maps.places.PlacesServiceStatus.OK) {
                 const list = document.getElementById('results');
+                result_num.textContent = results.length;
                 for (let i=0;i<results.length;i++) {
                     createMarker(results[i], results[i].name);
                     let li = document.createElement('li');
