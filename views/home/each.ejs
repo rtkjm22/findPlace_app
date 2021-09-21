@@ -22,10 +22,10 @@
         <div class="header_nav">
             <nav>
                 <ul>
-                    <li><a href="#">TOP</a></li>
-                    <li><a href="#">CONTACT</a></li>
-                    <li><a href="#">LOGIN</a></li>
-                    <li class="signup"><a href="/users/signup">SIGN UP</a></li>
+                    <li><a href="<%= link %>">TOP</a></li>
+                    <li><a href="../../../contact">CONTACT</a></li>
+                    <li><a href="<%= link %>/edit">EDIT</a></li>
+                    <li class="signup"><a href="<%= link %>/logout">LOGOUT</a></li>
                 </ul>
             </nav>
         </div>
@@ -81,7 +81,7 @@
     </footer>
 
     <script type="text/javascript" src="../../src/js/gm_index.js"> </script>
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=<%= key %>&callback=initMap"></script>
+    <!-- <script async defer src="https://maps.googleapis.com/maps/api/js?key=<%= key %>&callback=initMap"></script> -->
     <script type="text/javascript" src="../../src/js/each.js"> </script>
 </body>
 </html>

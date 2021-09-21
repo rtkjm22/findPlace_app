@@ -20,7 +20,7 @@ router.get('/', (req, res, next) => {
 
   const data = {
     title: 'Find What You Want',
-    key: key,
+    key: key
   }
   res.render('index', data);
 });
@@ -29,12 +29,21 @@ router.get('/search', (req, res, next) => {
     if (req.query) {
         let data = {
             title: 'Search Results',
-            key: key,
+            key: key
         }
         res.render('search', data);
     } else {
         res.redirect('/');
     }
+});
+
+router.get('/contact', (req, res, next) => {
+  let data = {
+    title: 'CONTACT',
+    err: null,
+    form: null
+  }
+  res.render('contact', data);
 });
 
 module.exports = router;

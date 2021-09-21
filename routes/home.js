@@ -6,6 +6,8 @@ const { OPEN_READWRITE } = require('sqlite3');
 const key = process.env.API_KEY;
 const bcrypt = require('bcrypt');
 
+const link = "http://localhost:3000/home";
+
 // セッションしているか判定
 function check_session(req, res) {
     if (req.session.login == null) {
@@ -34,9 +36,10 @@ router.get('/', (req, res, next) => {
 router.get('/:name/:age', (req, res, next) => {
   if (check_session(req, res)) { return };
 
-  const name = req.params.name;
-  const age  = req.params.age;
-  const content = `こんにちは、${name}さん！`;
+  const p_name = req.params.name;
+  const p_age  = req.params.age;
+  const home_link = `${link}/${p_name}/${p_age}`;
+  const content = `こんにちは、${p_name}さん！`;
 
   const mail = req.session.login.mail;
   const color = req.session.login.color;
@@ -66,7 +69,8 @@ router.get('/:name/:age', (req, res, next) => {
       content: content,
       key: key,
       history: history,
-      path: `/home/${name}/${age}`
+      path: `/home/${p_name}/${p_age}`,
+      link: home_link,
     }
     res.render('home/each', data);
   }).catch(e => {
@@ -118,14 +122,19 @@ router.get('/:name/:age/results', (req, res, next) => {
   const mail = req.session.login.mail;
   const range = req.query.range;
 
+  const p_name = req.params.name;
+  const p_age = req.params.age;
+  const home_link = `${link}/${p_name}/${p_age}`;
+
   console.log('リザルト画面にアクセスできました。');
   console.log(range);
 
   let data = {
     alert: 'リザルト画面です。',
     range: range,
-    title: 'result',
-    key: key
+    title: 'RESULTS',
+    key: key,
+    link: home_link,
   }
   res.render('home/results', data);
 
@@ -142,16 +151,21 @@ router.get('/:name/:age/edit', (req, res, next) => {
   const path = `/home/${req.session.login.name}/${req.session.login.age}/edit`;
   const id = req.session.login.id;
 
+  const p_name = req.params.name;
+  const p_age = req.params.age;
+  const home_link = `${link}/${p_name}/${p_age}`;
+
   db.User.findByPk(id)
   .then( usr => {
     let form = usr;
 
     let data = {
-      title: 'update',
+      title: 'UPDATE',
       content: 'ユーザー情報の変更',
       form: form,
       path: path,
       err: null,
+      link: home_link,
     }
     res.render('home/edit', data);
     })
@@ -165,6 +179,10 @@ router.post('/:name/:age/edit', (req, res, next) => {
 
   const path = `/home/${req.session.login.name}/${req.session.login.age}/edit`;
   const next_path = `/home/${req.session.login.name}/${req.session.login.age}/updated`;
+
+  const p_name = req.params.name;
+  const p_age = req.params.age;
+  const home_link = `${link}/${p_name}/${p_age}`;
 
   let form = {
     name:   req.body.name,
@@ -206,10 +224,11 @@ router.post('/:name/:age/edit', (req, res, next) => {
         console.log(err.message);
         console.log('------------------------------------------------------------');
         let data = {
-          title: 'update',
+          title: 'UPDATE',
           content: 'ユーザー情報の変更',
           form: form,
           path: path,
+          link: home_link,
           err: err.message,
         }
         res.render('home/edit', data);
