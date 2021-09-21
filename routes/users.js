@@ -60,7 +60,7 @@ router.get('/signup', (req, res, next) => {
 
 router.post('/signup', async (req, res, next) => {
     const salt = 10;
-    const hashed_pass = await bcrypt.hash(req.body.pass, 10);
+    const hashed_pass = await bcrypt.hash(req.body.pass, salt);
     let form = {
         name:   req.body.name,
         age:    req.body.age,

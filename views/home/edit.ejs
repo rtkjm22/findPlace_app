@@ -9,6 +9,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&family=M+PLUS+Rounded+1c&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/styles/themes/classic.min.css">
+    <link rel="stylesheet" href="../../../src/css/signup.css">
 </head>
 <body>
 
@@ -37,35 +39,35 @@
         <p class="explain"><%= content %></p>
 
         <ul class="err_msg">
-          <% if (err !== null) {for (let i in err.errors) { %>
-            <li><%= err.errors[i].message %></li>
-          <% }} %>
+          <% if (err !== null){ %>
+            <li><%= err %></li>
+          <% } %>
         </ul>
 
         <form action="<%= path %>" method="POST" id="form">
             <div class="form_item">
-                <label for="name">NAME</label>
+                <label class="str_color_item" for="name">NAME</label>
                 <input type="text" name="name" id="name" value="<%= form.name %>" autocomplete="name" inputmode="text" placeholder="田中 太郎">
                 <ul class="form_err">
                     
                 </ul>
             </div>
             <div class="form_item">
-                <label for="age">AGE</label>
+                <label class="str_color_item" for="age">AGE</label>
                 <input type="number" name="age" id="age" value="<%= form.age %>" autocomplete="on" inputmode="numeric" placeholder="20">
                 <ul class="form_err">
                     
                 </ul>
             </div>
             <div class="form_item">
-                <label for="mail">MAIL</label>
+                <label class="str_color_item" for="mail">MAIL</label>
                 <input type="email" name="mail" id="mail" value="<%= form.mail %>" autocomplete="email" autocapitalize="off" autocorrect="off" inputmode="email" placeholder="example@gmail.com">
                 <ul class="form_err">
                     
                 </ul>
             </div>
             <div class="form_item">
-                <label for="color">COLOR</label>
+                <label class="str_color_item" for="color">COLOR</label>
                 <div id="pickr"></div>
                 <input type="text" id="color" name="color" value="<%= form.color %>">
                 <ul class="form_err">
@@ -73,20 +75,31 @@
                 </ul>
             </div>
             <div class="form_item">
-                <label for="pass">pass</label>
-                <input type="password" name="pass" id="pass" value="<%= form.pass%>">
-                <ul class="form_err">
-                    
-                </ul>
+              <label for="secret" class="str_color_item">SECRET</label>
+              <input type="secret" name="secret" id="secret" value="<%= form.secret %>">
+              <ul class="form_err">
+
+              </ul>
             </div>
+            <div class="form_item">
+              <label class="str_color_item" for="pass">PASS</label>
+              <input type="password" name="pass" id="pass" value="" autocomplete="current-password" placeholder="パスワード" required>
+              <ul class="form_err">
+                  
+              </ul>
+          </div>
 
 
-            <input type="submit" value="新規登録" id="submit">
+
+            <input type="submit" value="更新" id="submit">
         </form>
     </main>
 
     <footer>
             <small>©2021 Ryota Kojima All rights reserved.</small>
     </footer>
+    
+    <script src="/styles/pickr.min.js"></script>
+    <script src="../../../src/js/edit.js"></script>
 </body>
 </html>

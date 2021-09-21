@@ -130,37 +130,37 @@ function initMap() {
     }
 }
 
-(() => {
-    var ul = document.getElementById('results');
-    var items= [
-        'ローソン 高崎中泉町店',
-        'セブンイレブン　高崎中泉町店',
-        'セブンイレブン　高崎大八木町店',
-        'ミニストップ 高崎大八木店',
-        '葉面酒場　Naruze',
-        'ENISHI',
-        'Restaurant Olivier',
-        'Casa Familiar',
-        'ローソン 高崎中泉町店',
-        'セブンイレブン　高崎中泉町店',
-        'セブンイレブン　高崎大八木町店',
-        'ミニストップ 高崎大八木店',
-        '葉面酒場　Naruze',
-        'ENISHI',
-        'Restaurant Olivier',
-        'Casa Familiar',
-        'ローソン 高崎中泉町店',
-        'セブンイレブン　高崎中泉町店',
-        'セブンイレブン　高崎大八木町店',
-        'ミニストップ 高崎大八木店',
-        '葉面酒場　Naruze',
-        'ENISHI',
-        'Restaurant Olivier',
-        'Casa Familiar',
-    ];
-    for (let i=0;i<items.length;i++) {
-        let item = document.createElement('li');
-        item.innerHTML = '<a href="#">' + items[i] + '</a>'
-        ul.appendChild(item);
-    }
-})();
+// (() => {
+//     var ul = document.getElementById('results');
+//     var items= [
+//         'ローソン 高崎中泉町店',
+//         'セブンイレブン　高崎中泉町店',
+//         'セブンイレブン　高崎大八木町店',
+//         'ミニストップ 高崎大八木店',
+//         '葉面酒場　Naruze',
+//         'ENISHI',
+//         'Restaurant Olivier',
+//         'Casa Familiar',
+//         'ローソン 高崎中泉町店',
+//         'セブンイレブン　高崎中泉町店',
+//         'セブンイレブン　高崎大八木町店',
+//         'ミニストップ 高崎大八木店',
+//         '葉面酒場　Naruze',
+//         'ENISHI',
+//         'Restaurant Olivier',
+//         'Casa Familiar',
+//         'ローソン 高崎中泉町店',
+//         'セブンイレブン　高崎中泉町店',
+//         'セブンイレブン　高崎大八木町店',
+//         'ミニストップ 高崎大八木店',
+//         '葉面酒場　Naruze',
+//         'ENISHI',
+//         'Restaurant Olivier',
+//         'Casa Familiar',
+//     ];
+//     for (let i=0;i<items.length;i++) {
+//         let item = document.createElement('li');
+//         item.innerHTML = '<a href="#">' + items[i] + '</a>'
+//         ul.appendChild(item);
+//     }
+// })();

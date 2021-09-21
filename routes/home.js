@@ -148,7 +148,7 @@ router.get('/:name/:age/edit', (req, res, next) => {
 
     let data = {
       title: 'update',
-      content: 'コンテント',
+      content: 'ユーザー情報の変更',
       form: form,
       path: path,
       err: null,
@@ -172,6 +172,7 @@ router.post('/:name/:age/edit', (req, res, next) => {
     mail:   req.body.mail,
     pass:   req.body.pass,
     color:  req.body.color,
+    secret: req.body.secret
   }
     db.User.findByPk(req.session.login.id)
       .then( async (usr) => {
@@ -188,6 +189,7 @@ router.post('/:name/:age/edit', (req, res, next) => {
         age:  form.age,
         mail: form.mail,
         color: form.color,
+        secret: form.secret
       },
       {
         where: {id: req.session.login.id}
@@ -200,14 +202,15 @@ router.post('/:name/:age/edit', (req, res, next) => {
       .catch( err => {
         console.log('------------------------------------------------------------');
         console.log(JSON.stringify(err));
+        console.log(err);
         console.log(err.message);
         console.log('------------------------------------------------------------');
         let data = {
           title: 'update',
-          content: 'コンテント',
+          content: 'ユーザー情報の変更',
           form: form,
           path: path,
-          err: err,
+          err: err.message,
         }
         res.render('home/edit', data);
       })
@@ -228,7 +231,11 @@ router.get('/:name/:age/updated', (req, res, next) => {
 });
 // /ユーザー情報変更完了ページ -> get ======================================================================================================================
 
-
+router.get('/:name/:age/logout', (req, res, next) => {
+  req.session.destroy((err) => {
+    res.redirect('/');
+  })
+});
 
 
 // マイカラーAPI -> get ======================================================================================================================
