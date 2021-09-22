@@ -18,7 +18,7 @@ form {
       padding: 10px 20px;
       border-radius: 10px;
       background-color: white;
-      border: 3px solid v.$gray;
+      border: 2px solid v.$gray;
       color: v.$gray;
   }
   #keyword {
@@ -27,7 +27,7 @@ form {
       border-radius: 10px;
       background-color: white;
       box-sizing: border-box;
-      border: 3px solid v.$gray;
+      border: 2px solid v.$gray;
       color: v.$gray;
       &::placeholder {
           color: v.$gray;
@@ -75,7 +75,7 @@ form {
       padding: 10px 20px;
       background-color: white;
       font-family: v.$en;
-      border: 3px solid v.$gray;
+      border: 2px solid v.$gray;
       border-radius: 10px;
       cursor: pointer;
       font-size: 1.1rem;

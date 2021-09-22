@@ -2,7 +2,11 @@
 
 @use "variable" as v;
 
-h1, h2, h3, p, span, label, small, a, input {
+body {
+  margin: 0;
+}
+
+h1, h2, h3, p, span, label, small, a, input, textarea {
     font-family: v.$en;
     color: v.$gray;
 }

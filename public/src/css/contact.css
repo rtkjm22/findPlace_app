@@ -1,4 +1,116 @@
-h1, h2, h3, p, span, label, small, a, input {
+/*
+html5doctor.com Reset Stylesheet
+v1.6.1
+Last Updated: 2010-09-17
+Author: Richard Clark - http://richclarkdesign.com
+Twitter: @rich_clark
+*/
+html, body, div, span, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+abbr, address, cite, code,
+del, dfn, em, img, ins, kbd, q, samp,
+small, strong, sub, sup, var,
+b, i,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+caption,
+tbody, tfoot, thead, tr, th, td, table,
+article, aside, canvas, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent;
+}
+
+body {
+  line-height: 1;
+}
+
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+nav ul {
+  list-style: none;
+}
+
+ul {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: "";
+  content: none;
+}
+
+a {
+  margin: 0;
+  padding: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent;
+  text-decoration: none;
+  color: black;
+}
+
+/* change colours to suit your needs */
+ins {
+  background-color: #ff9;
+  color: #000;
+  text-decoration: none;
+}
+
+/* change colours to suit your needs */
+mark {
+  background-color: #ff9;
+  color: #000;
+  font-style: italic;
+  font-weight: bold;
+}
+
+del {
+  text-decoration: line-through;
+}
+
+abbr[title], dfn[title] {
+  border-bottom: 1px dotted;
+  cursor: help;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+change border colour to suit your needs hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #cccccc;
+  margin: 0;
+  padding: 0;
+}
+
+input, select {
+  vertical-align: middle;
+}
+
+body {
+  margin: 0;
+}
+
+h1, h2, h3, p, span, label, small, a, input, textarea {
   font-family: "Comfortaa", cursive;
   color: #414141;
 }
@@ -205,7 +317,7 @@ form {
   padding: 10px 20px;
   background-color: white;
   font-family: "Comfortaa", cursive;
-  border: 3px solid #414141;
+  border: 2px solid #414141;
   border-radius: 10px;
   cursor: pointer;
   transition: all 0.3s;
@@ -224,11 +336,13 @@ form label {
 }
 form select {
   width: 100%;
-  appearance: none;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
   padding: 10px 20px;
   border-radius: 10px;
   background-color: white;
-  border: 3px solid #414141;
+  border: 2px solid #414141;
   color: #414141;
 }
 form #keyword {
@@ -237,7 +351,13 @@ form #keyword {
   border-radius: 10px;
   background-color: white;
   box-sizing: border-box;
-  border: 3px solid #414141;
+  border: 2px solid #414141;
+  color: #414141;
+}
+form #keyword::-moz-placeholder {
+  color: #414141;
+}
+form #keyword:-ms-input-placeholder {
   color: #414141;
 }
 form #keyword::placeholder {
@@ -249,7 +369,8 @@ form #keyword:active {
 form #range {
   margin-bottom: 15px;
   -webkit-appearance: none;
-  appearance: none;
+  -moz-appearance: none;
+       appearance: none;
   cursor: pointer;
   background-color: #414141;
   height: 2px;
@@ -285,7 +406,7 @@ form #submit {
   padding: 10px 20px;
   background-color: white;
   font-family: "Comfortaa", cursive;
-  border: 3px solid #414141;
+  border: 2px solid #414141;
   border-radius: 10px;
   cursor: pointer;
   font-size: 1.1rem;
@@ -295,4 +416,14 @@ form #submit:hover {
   background-color: #ffff7d;
 }
 
-/*# sourceMappingURL=contact.css.map */
+#type {
+  margin-bottom: 10px;
+}
+
+textarea {
+  border: 2px solid #414141;
+  border-radius: 10px;
+  padding: 10px 20px;
+  margin-bottom: 10px;
+}
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uL3Njc3MvX3Jlc2V0LnNjc3MiLCJjb250YWN0LmNzcyIsIi4uL3Njc3MvX2Jhc2Uuc2NzcyIsIi4uL3Njc3MvX3ZhcmlhYmxlLnNjc3MiLCIuLi9zY3NzL19vbmVfY2FyZC5zY3NzIiwiLi4vc2Nzcy9fZm9ybS5zY3NzIiwiLi4vc2Nzcy9jb250YWN0LnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7Ozs7OztDQUFBO0FBUUE7Ozs7Ozs7Ozs7Ozs7RUFhSSxTQUFBO0VBQ0EsVUFBQTtFQUNBLFNBQUE7RUFDQSxVQUFBO0VBQ0EsZUFBQTtFQUNBLHdCQUFBO0VBQ0EsdUJBQUE7QUNBSjs7QURHQTtFQUNJLGNBQUE7QUNBSjs7QURHQTs7RUFFSSxjQUFBO0FDQUo7O0FER0E7RUFDSSxnQkFBQTtBQ0FKOztBREdBO0VBQ0ksZ0JBQUE7QUNBSjs7QURHQTtFQUNJLFlBQUE7QUNBSjs7QURHQTs7RUFFSSxXQUFBO0VBQ0EsYUFBQTtBQ0FKOztBREdBO0VBQ0ksU0FBQTtFQUNBLFVBQUE7RUFDQSxlQUFBO0VBQ0Esd0JBQUE7RUFDQSx1QkFBQTtFQUNBLHFCQUFBO0VBQ0EsWUFBQTtBQ0FKOztBREdBLHNDQUFBO0FBQ0E7RUFDSSxzQkFBQTtFQUNBLFdBQUE7RUFDQSxxQkFBQTtBQ0FKOztBREdBLHNDQUFBO0FBQ0E7RUFDSSxzQkFBQTtFQUNBLFdBQUE7RUFDQSxrQkFBQTtFQUNBLGlCQUFBO0FDQUo7O0FER0E7RUFDSSw2QkFBQTtBQ0FKOztBREdBO0VBQ0kseUJBQUE7RUFDQSxZQUFBO0FDQUo7O0FER0E7RUFDSSx5QkFBQTtFQUNBLGlCQUFBO0FDQUo7O0FER0E7RUFFSSxjQUFBO0VBQ0EsV0FBQTtFQUNBLFNBQUE7RUFDQSw2QkFBQTtFQUNBLFNBQUE7RUFDQSxVQUFBO0FDREo7O0FESUE7RUFDSSxzQkFBQTtBQ0RKOztBQ3RHQTtFQUNFLFNBQUE7QUR5R0Y7O0FDdEdBO0VBQ0ksaUNDUkM7RURTRCxjQ1JHO0FGaUhQOztBQ3RHQTs7RUFBQTtBQUdBO0VBQ0ksa0JBQUE7RUFDQSxvQkFBQTtFQUNBLFlBQUE7QUR5R0o7QUN4R0k7RUFDSSxpQkFBQTtFQUNBLHFCQUFBO0FEMEdSO0FFakhJO0VES0E7SUFJUSxxQkFBQTtFRDRHVjtBQUNGOztBQ3pHQTtFQUNJLGFBQUE7RUFDQSxrQkFBQTtFQUNBLE1BQUE7RUFDQSxXQUFBO0VBQ0EsV0FBQTtFQUNBLFlBQUE7RUFDQSxlQUFBO0FENEdKO0FDM0dJO0VBQ0ksY0FBQTtFQUNBLGtCQUFBO0VBQ0EsV0FBQTtFQUNBLFdBQUE7RUFDQSxrQkFBQTtFQUNBLHVCQUFBO0FENkdSO0FDNUdRO0VBQ0ksTUFBQTtBRDhHWjtBQzVHUTtFQUNJLFFBQUE7QUQ4R1o7QUM1R1E7RUFDSSxTQUFBO0FEOEdaOztBQzFHQTtFQUNJLGVBQUE7RUFDQSxTQUFBO0VBQ0EsU0FBQTtFQUNBLFlBQUE7QUQ2R0o7QUM1R0k7RUFDSSxhQUFBO0VBQ0EsV0FBQTtFQUNBLDhCQUFBO0VBQ0EsbUJBQUE7RUFDQSxzQkFBQTtBRDhHUjtBQzVHSTtFQUNJLGtCQUFBO0VBQ0Esc0JBQUE7RUFDQSxrQkFBQTtFQUNBLG1CQUFBO0VBQ0EsZ0JBQUE7QUQ4R1I7QUM3R1E7RUFDSSxZQUFBO0FEK0daO0FDN0dRO0VBQ0ksV0FBQTtFQUNBLGtCQUFBO0VBQ0EsU0FBQTtFQUNBLE9BQUE7RUFDQSxRQUFBO0VBQ0EsV0FBQTtFQUNBLHdCQUFBO0VBQ0Esb0JBQUE7QUQrR1o7QUM3R1E7RUFDSSxXQUFBO0FEK0daO0FDNUdJO0VBQ0ksbUJBQUE7RUFDQSxxQkFBQTtBRDhHUjtBQzVHSTtFQUNJLHlCQzNGQztFRDRGRCx1QkFBQTtFQUNBLG9CQUFBO0FEOEdSO0FDN0dRO0VBQ0kseUJBQUE7RUFDQSx1QkFBQTtBRCtHWjtBQzdHUTtFQUNJLGFBQUE7QUQrR1o7O0FDekdBOztFQUFBO0FBSUE7RUFDSSxpQkFBQTtFQUNBLG9CQUFBO0FEMkdKOztBQ3hHQTs7RUFBQTtBQUdBO0VBQ0ksa0JBQUE7RUFDQSxZQUFBO0VBQ0EsWUFBQTtFQUNBLHlCQ3pISztBRm9PVDtBQzFHSTtFQUNJLGNBQUE7RUFDQSxrQkFBQTtFQUNBLGlCQUFBO0FENEdSO0FFN05JO0VEcUhJO0lBQ0ksbUJBQUE7SUFDQSxpQkFBQTtFRDJHVjtBQUNGOztBR2hQQTtFQUNJLGdCQUFBO0VBQ0EsZUFBQTtBSG1QSjs7QUdqUEE7RUFDSSxrQkFBQTtFQUNBLGVBQUE7RUFDQSxtQkFBQTtBSG9QSjs7QUdsUEE7RUFDSSxrQkFBQTtFQUNBLDRDRGJDO0VDY0QsbUJBQUE7RUFDQSxlQUFBO0FIcVBKOztBR2xQQTtFQUNJLDJCQUFBO0VBQ0EscUJBQUE7RUFDQSxtQkFBQTtFQUNBLGtCQUFBO0FIcVBKO0FHcFBJO0VBQ0ksY0RwQkY7RUNxQkUsaUJBQUE7RUFDQSxrQkFBQTtBSHNQUjs7QUduUEE7RUFDSSx5QkFBQTtFQUNBLGFBQUE7RUFDQSxtQkFBQTtFQUNBLGdERDVCSztBRmtSVDtBRXhRSTtFQ2NKO0lBTVEsYUFBQTtFSHdQTjtBQUNGOztBR3RQQTtFQUNJLG1CQUFBO0FIeVBKO0FHeFBJO0VBQ0ksY0FBQTtFQUNBLG1CQUFBO0FIMFBSO0FHeFBJO0VBQ0ksc0JBQUE7RUFDQSxtQkFBQTtFQUNBLGtCQUFBO0VBQ0EsV0FBQTtFQUNBLG1CQUFBO0FIMFBSO0FFNVJJO0VDdUJKO0lBY1EsbUJBQUE7RUgyUE47QUFDRjs7QUd6UEE7RUFDSSwyQkFBQTtFQUNBLHFCQUFBO0FINFBKO0FHM1BJO0VBQ0ksY0R2REY7RUN3REUsa0JBQUE7QUg2UFI7O0FHMVBBO0VBQ0ksa0JBQUE7RUFDQSx1QkFBQTtFQUNBLGlDRGpFQztFQ2tFRCx5QkFBQTtFQUNBLG1CQUFBO0VBQ0EsZUFBQTtFQUNBLG9CQUFBO0FINlBKO0FHNVBJO0VBQ0kseUJEckVDO0FGbVVUOztBSWpVRTtFQUNJLG1CQUFBO0FKb1VOO0FJbFVFO0VBQ0ksY0FBQTtFQUVBLGVBQUE7RUFDQSxtQkFBQTtBSm1VTjtBSWpVRTtFQUNJLFdBQUE7RUFDQSx3QkFBQTtLQUFBLHFCQUFBO1VBQUEsZ0JBQUE7RUFDQSxrQkFBQTtFQUNBLG1CQUFBO0VBQ0EsdUJBQUE7RUFDQSx5QkFBQTtFQUNBLGNGbkJDO0FGc1ZQO0FJalVFO0VBQ0ksV0FBQTtFQUNBLGtCQUFBO0VBQ0EsbUJBQUE7RUFDQSx1QkFBQTtFQUNBLHNCQUFBO0VBQ0EseUJBQUE7RUFDQSxjRjVCQztBRitWUDtBSWxVTTtFQUNJLGNGOUJIO0FGa1dQO0FJclVNO0VBQ0ksY0Y5Qkg7QUZrV1A7QUlyVU07RUFDSSxjRjlCSDtBRmtXUDtBSWxVTTtFQUNJLHlCQUFBO0FKb1VWO0FJalVFO0VBQ0ksbUJBQUE7RUFDQSx3QkFBQTtFQUNBLHFCQUFBO09BQUEsZ0JBQUE7RUFDQSxlQUFBO0VBQ0EseUJGekNDO0VFMENELFdBQUE7RUFDQSxXQUFBO0VBQ0EsVUFBQTtFQUNBLG1CQUFBO0VBQ0Esc0JBQUE7QUptVU47QUlsVU07RUFDSSx3QkFBQTtFQUNBLGtCQUFBO0VBQ0EsV0FBQTtFQUNBLFlBQUE7RUFDQSx5QkFBQTtFQUNBLGtCQUFBO0VBQ0EsK0NBQUE7QUpvVVY7QUlsVU07RUFDSSxrQkFBQTtFQUNBLFdBQUE7RUFDQSxZQUFBO0VBQ0Esa0JBQUE7RUFDQSwrQ0FBQTtFQUNBLFlBQUE7QUpvVVY7QUlsVU07RUFDSSxTQUFBO0FKb1VWO0FJbFVNO0VBQ0ksZ0RBQUE7QUpvVVY7QUlqVUU7RUFDSSxrQkFBQTtFQUNBLHVCQUFBO0VBQ0EsaUNGM0VEO0VFNEVDLHlCQUFBO0VBQ0EsbUJBQUE7RUFDQSxlQUFBO0VBQ0EsaUJBQUE7RUFDQSxvQkFBQTtBSm1VTjtBSWxVTTtFQUNJLHlCRmhGRDtBRm9aVDs7QUsvWUE7RUFDRSxtQkFBQTtBTGtaRjs7QUtoWkE7RUFDRSx5QkFBQTtFQUNBLG1CQUFBO0VBQ0Esa0JBQUE7RUFDQSxtQkFBQTtBTG1aRiIsImZpbGUiOiJjb250YWN0LmNzcyJ9 */

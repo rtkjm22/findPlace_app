@@ -1,6 +1,17 @@
 @charset "utf-8";
 
+@use "reset";
 @use "variable" as v;
 @use "base";
 @use "one_card";
 @use "form";
+
+#type {
+  margin-bottom: 10px;
+}
+textarea {
+  border: 2px solid v.$gray;
+  border-radius: 10px;
+  padding: 10px 20px;
+  margin-bottom: 10px;
+}

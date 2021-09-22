@@ -1,0 +1,352 @@
+/*
+html5doctor.com Reset Stylesheet
+v1.6.1
+Last Updated: 2010-09-17
+Author: Richard Clark - http://richclarkdesign.com
+Twitter: @rich_clark
+*/
+html, body, div, span, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+abbr, address, cite, code,
+del, dfn, em, img, ins, kbd, q, samp,
+small, strong, sub, sup, var,
+b, i,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+caption,
+tbody, tfoot, thead, tr, th, td, table,
+article, aside, canvas, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent;
+}
+
+body {
+  line-height: 1;
+}
+
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+nav ul {
+  list-style: none;
+}
+
+ul {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: "";
+  content: none;
+}
+
+a {
+  margin: 0;
+  padding: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent;
+  text-decoration: none;
+  color: black;
+}
+
+/* change colours to suit your needs */
+ins {
+  background-color: #ff9;
+  color: #000;
+  text-decoration: none;
+}
+
+/* change colours to suit your needs */
+mark {
+  background-color: #ff9;
+  color: #000;
+  font-style: italic;
+  font-weight: bold;
+}
+
+del {
+  text-decoration: line-through;
+}
+
+abbr[title], dfn[title] {
+  border-bottom: 1px dotted;
+  cursor: help;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+change border colour to suit your needs hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #cccccc;
+  margin: 0;
+  padding: 0;
+}
+
+input, select {
+  vertical-align: middle;
+}
+
+body {
+  margin: 0;
+}
+
+h1, h2, h3, p, span, label, small, a, input, textarea {
+  font-family: "Comfortaa", cursive;
+  color: #414141;
+}
+
+/**
+* header ****************************************************************************************************
+**/
+header {
+  position: relative;
+  margin-bottom: 100px;
+  width: 100vw;
+}
+header h1 {
+  font-size: 3.5rem;
+  margin: 20px 0 0 80px;
+}
+@media screen and (max-width:750px) {
+  header h1 {
+    margin: 20px 0 0 20px;
+  }
+}
+
+.hum {
+  display: none;
+  position: absolute;
+  top: 0;
+  right: 20px;
+  width: 36px;
+  height: 36px;
+  cursor: pointer;
+}
+.hum span {
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 4px;
+  border-radius: 4px;
+  background-color: black;
+}
+.hum span:nth-of-type(1) {
+  top: 0;
+}
+.hum span:nth-of-type(2) {
+  top: 48%;
+}
+.hum span:nth-of-type(3) {
+  bottom: 0;
+}
+
+.header_nav {
+  position: fixed;
+  top: 20px;
+  right: 5%;
+  width: 400px;
+}
+.header_nav ul {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+}
+.header_nav li {
+  position: relative;
+  box-sizing: border-box;
+  padding: 10px 20px;
+  border-radius: 10px;
+  list-style: none;
+}
+.header_nav li:hover {
+  opacity: 0.7;
+}
+.header_nav li::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 3px;
+  background-color: yellow;
+  transition: all 0.3s;
+}
+.header_nav li:hover::before {
+  width: 100%;
+}
+.header_nav a {
+  white-space: nowrap;
+  text-decoration: none;
+}
+.header_nav .signup {
+  background-color: #ffff7d;
+  border: 3px solid white;
+  transition: all 0.3s;
+}
+.header_nav .signup:hover {
+  border: 3px solid #ffff7d;
+  background-color: white;
+}
+.header_nav .signup::before {
+  display: none;
+}
+
+/**
+* main ****************************************************************************************************
+**/
+main {
+  max-width: 1400px;
+  margin: 0 auto 100px;
+}
+
+/**
+* footer ****************************************************************************************************
+**/
+footer {
+  position: relative;
+  width: 100vw;
+  height: 50px;
+  background-color: #ffff7d;
+}
+footer small {
+  display: block;
+  text-align: center;
+  line-height: 50px;
+}
+@media screen and (max-width:650px) {
+  footer small {
+    white-space: nowrap;
+    font-size: 0.5rem;
+  }
+}
+
+main {
+  max-width: 800px;
+  padding: 0 20px;
+}
+
+.title {
+  text-align: center;
+  font-size: 3rem;
+  margin-bottom: 30px;
+}
+
+.explain {
+  text-align: center;
+  font-family: "M PLUS Rounded 1c", sans-serif;
+  margin-bottom: 50px;
+  padding: 0 20px;
+}
+
+.err_msg {
+  list-style-position: inside;
+  list-style-type: disc;
+  margin-bottom: 50px;
+  padding-left: 50px;
+}
+.err_msg li {
+  color: #fa4e4e;
+  font-size: 1.1rem;
+  margin-bottom: 5px;
+}
+
+form {
+  background-color: #f5f583;
+  padding: 50px;
+  border-radius: 20px;
+  box-shadow: 0px 5px 10px -2px rgba(0, 0, 0, 0.3);
+}
+@media screen and (max-width:650px) {
+  form {
+    padding: 20px;
+  }
+}
+
+.form_item {
+  margin-bottom: 30px;
+}
+.form_item label {
+  display: block;
+  margin-bottom: 10px;
+}
+.form_item input {
+  box-sizing: border-box;
+  border-radius: 10px;
+  padding: 10px 20px;
+  width: 100%;
+  margin-bottom: 10px;
+}
+@media screen and (max-width:650px) {
+  .form_item {
+    margin-bottom: 15px;
+  }
+}
+
+.form_err {
+  list-style-position: inside;
+  list-style-type: disc;
+}
+.form_err li {
+  color: #fa4e4e;
+  margin-bottom: 5px;
+}
+
+#submit {
+  padding: 10px 20px;
+  background-color: white;
+  font-family: "Comfortaa", cursive;
+  border: 2px solid #414141;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+#submit:hover {
+  background-color: #ffff7d;
+}
+
+.thanks {
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-around;
+}
+.thanks a {
+  display: block;
+  list-style: none;
+  background-color: #ffff7d;
+  padding: 10px 20px;
+  border-radius: 10px;
+  border: 2px solid #414141;
+  transition: 0.3s all;
+}
+.thanks a:hover {
+  background-color: white;
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+}
+
+/*# sourceMappingURL=thanks.css.map */
