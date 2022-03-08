@@ -1,0 +1,87 @@
+@charset "utf-8";
+
+@use "variable" as v;
+
+form {
+  .form_item {
+      margin-bottom: 30px;
+  }
+  label {
+      display: block;
+      // font-family: v.$ja;
+      font-size: 1rem;
+      margin-bottom: 10px;
+  }
+  select {
+      width: 100%;
+      appearance: none;
+      padding: 10px 20px;
+      border-radius: 10px;
+      background-color: white;
+      border: 2px solid v.$gray;
+      color: v.$gray;
+  }
+  #keyword {
+      width: 100%;
+      padding: 10px 20px;
+      border-radius: 10px;
+      background-color: white;
+      box-sizing: border-box;
+      border: 2px solid v.$gray;
+      color: v.$gray;
+      &::placeholder {
+          color: v.$gray;
+      }
+      &:active {
+          border: 3px solid v.$gray;
+      }
+  }
+  #range {
+      margin-bottom: 15px;
+      -webkit-appearance: none;
+      appearance: none;
+      cursor: pointer;
+      background-color: v.$gray;
+      height: 2px;
+      width: 100%;
+      outline: 0;
+      border-radius: 10px;
+      box-sizing: border-box;
+      &::-webkit-slider-thumb {
+          -webkit-appearance: none;
+          background: yellow;
+          width: 24px;
+          height: 24px;
+          border: 1px solid v.$gray;
+          border-radius: 50%;
+          box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.15);
+      }
+      &::-moz-range-thumb {
+          background: yellow; 
+          width: 24px;
+          height: 24px; 
+          border-radius: 50%;
+          box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.15);
+          border: none;
+      }
+      &::-moz-focus-outer {
+          border: 0;
+      }
+      &:active::-webkit-slider-thumb {
+          box-shadow: 0px 5px 10px -2px rgba(0, 0, 0, 0.3);
+      } 
+  }
+  #submit {
+      padding: 10px 20px;
+      background-color: white;
+      font-family: v.$en;
+      border: 2px solid v.$gray;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 1.1rem;
+      transition: all .3s;
+      &:hover {
+          background-color: v.$yellow;
+      }
+  }
+}

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="content-type" content="text/html">
+    <title><%= title %></title>
+    <link rel="shortcut icon" href="../../src/img/favicon.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&family=M+PLUS+Rounded+1c&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../../src/css/each.css">
+</head>
+<body>
+    <header>
+        <h1>FWYW</h1>
+        <div class="hum">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="header_nav">
+            <nav>
+                <ul>
+                    <li><a href="<%= link %>">TOP</a></li>
+                    <li><a href="../../../contact">CONTACT</a></li>
+                    <li><a href="<%= link %>/edit">EDIT</a></li>
+                    <li class="signup"><a href="<%= link %>/logout">LOGOUT</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="overlay"></div>
+    </header>
+    
+    <main>
+        <h2 class="title"><%= title %></h2>
+        <p class="explain"><%= content %></p>
+        <div class="main_wrapper">
+            <div id="map" class="my_color"></div>
+            <div class="content my_color">
+                <form action="<%= path %>" method="POST" id="form">
+                    <div class="form_item">
+                        <label for="type" class="str_color">TYPES</label>
+                        <select name="type" id="type">
+                            <option value="0" hidden>タイプ検索</option>
+                            <option value="1">コンビニエンスストア</option>
+                            <option value="2">テイクアウトができる飲食店</option>
+                            <option value="3">ATM</option>
+                            <option value="4">鉄道・地下鉄</option>
+                            <option value="5">バス停</option>
+                            <option value="6">タクシー</option>
+                            <option value="7">レストラン</option>
+                            <option value="8">カフェ</option>
+                            <option value="9">パン屋</option>
+                        </select>
+                    </div>
+                    <div class="form_item">
+                        <label for="keyword" class="str_color">KEYWORDS</label>
+                        <input type="text" name="keyword" id="keyword" placeholder="キーワード検索">
+                    </div>
+                    <div class="form_item">
+                        <label for="range" class="str_color">DISTANCE (m)</label>
+                        <input type="range" name="range" id="range" min="0" max="2000" step="100" value="500">
+                        <p id="range_target" class="str_color">500m</p>
+                    </div>
+                    <input id="submit" type="submit" value="Search">
+                </form>
+            </div>
+        </div>
+        <div class="history my_color">
+          <h2 class="str_color">検索履歴</h2>
+          <ol class="history_list">
+            <% for (var i in history) { %>
+              <li class="str_color"><a class="str_color" href="#"><%= history[i].lng %>---<%= history[i].lat %></a></li>
+            <% } %>
+          </ol>
+        </div>
+    </main>
+    <footer>
+        <small>©2021 Ryota Kojima All rights reserved.</small>
+    </footer>
+
+    <script type="text/javascript" src="../../src/js/gm_index.js"> </script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=<%= key %>&callback=initMap"></script>
+    <script type="text/javascript" src="../../src/js/each.js"> </script>
+</body>
+</html>
+

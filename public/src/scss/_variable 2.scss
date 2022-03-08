@@ -1,0 +1,19 @@
+$ja: 'M PLUS Rounded 1c', sans-serif;;
+$en: 'Comfortaa', cursive;
+$gray: #414141;
+$yellow: #ffff7d;
+$red: #fa4e4e;
+$shadow: 0px 5px 10px -2px rgba(0, 0, 0, 0.3);
+
+
+$breakpoints: (
+    'pc_small': "screen and (max-width:1400px)",
+    'tab': "screen and (max-width:750px)",
+    'sp': "screen and (max-width:650px)",
+);
+//$breakpoint: pcで初期設定している
+@mixin md($breakpoint: sp) {
+    @media #{map-get($breakpoints, $breakpoint)} {
+        @content;
+    }
+}

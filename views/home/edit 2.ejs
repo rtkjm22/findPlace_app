@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="content-type" content="text/html">
+    <title><%= title %></title>
+    <link rel="shortcut icon" href="../src/img/favicon.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&family=M+PLUS+Rounded+1c&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/styles/themes/classic.min.css">
+    <link rel="stylesheet" href="../../../src/css/signup.css">
+</head>
+<body>
+
+    <header>
+        <h1>FWYW</h1>
+        <div class="hum">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="header_nav">
+            <nav>
+                <ul>
+                    <li><a href="<%= link %>">TOP</a></li>
+                    <li><a href="../../../contact">CONTACT</a></li>
+                    <li><a href="<%= link %>/edit">EDIT</a></li>
+                    <li class="signup"><a href="<%= link %>/logout">LOGOUT</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="overlay"></div>
+    </header>
+    
+    <main>
+        <h2 class="title"><%= title %></h2>
+        <p class="explain"><%= content %></p>
+
+        <ul class="err_msg">
+          <% if (err !== null){ %>
+            <li><%= err %></li>
+          <% } %>
+        </ul>
+
+        <form action="<%= path %>" method="POST" id="form">
+            <div class="form_item">
+                <label class="str_color_item" for="name">NAME</label>
+                <input type="text" name="name" id="name" value="<%= form.name %>" autocomplete="name" inputmode="text" placeholder="田中 太郎">
+                <ul class="form_err">
+                    
+                </ul>
+            </div>
+            <div class="form_item">
+                <label class="str_color_item" for="age">AGE</label>
+                <input type="number" name="age" id="age" value="<%= form.age %>" autocomplete="on" inputmode="numeric" placeholder="20">
+                <ul class="form_err">
+                    
+                </ul>
+            </div>
+            <div class="form_item">
+                <label class="str_color_item" for="mail">MAIL</label>
+                <input type="email" name="mail" id="mail" value="<%= form.mail %>" autocomplete="email" autocapitalize="off" autocorrect="off" inputmode="email" placeholder="example@gmail.com">
+                <ul class="form_err">
+                    
+                </ul>
+            </div>
+            <div class="form_item">
+                <label class="str_color_item" for="color">COLOR</label>
+                <div id="pickr"></div>
+                <input type="text" id="color" name="color" value="<%= form.color %>">
+                <ul class="form_err">
+                    
+                </ul>
+            </div>
+            <div class="form_item">
+              <label for="secret" class="str_color_item">SECRET</label>
+              <input type="secret" name="secret" id="secret" value="<%= form.secret %>">
+              <ul class="form_err">
+
+              </ul>
+            </div>
+            <div class="form_item">
+              <label class="str_color_item" for="pass">PASS</label>
+              <input type="password" name="pass" id="pass" value="" autocomplete="current-password" placeholder="パスワード" required>
+              <ul class="form_err">
+                  
+              </ul>
+          </div>
+
+
+
+            <input type="submit" value="更新" id="submit">
+        </form>
+    </main>
+
+    <footer>
+            <small>©2021 Ryota Kojima All rights reserved.</small>
+    </footer>
+    
+    <script src="/styles/pickr.min.js"></script>
+    <script src="../../../src/js/edit.js"></script>
+</body>
+</html>
